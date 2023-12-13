@@ -1,5 +1,5 @@
 from flask import g
-from flask_babel import gettext as _
+from flask_babel import gettext as get_text
 from flask_mail import Message
 
 from ihatemoney.utils import render_localized_template, send_email
@@ -7,8 +7,8 @@ from ihatemoney.utils import render_localized_template, send_email
 
 def send_creation_email(project):
     g.project = project
-    message_title = _(
-        "You have just created '%(project)s' " "to share your expenses",
+    message_title = get_text(
+        f"You have just created '{str(project)}' " "to share your expenses",
         project=project.name,
     )
 
